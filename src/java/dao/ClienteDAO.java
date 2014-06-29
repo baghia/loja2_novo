@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -85,52 +84,5 @@ public class ClienteDAO {
         } catch (SQLException ex) {
 
         }
-    }
-    
-    public static void main(String[] args) {
-        ClienteDAO c = new ClienteDAO();
-        System.out.println(c.consultar("renanHS", "renan03").getSenha());
-=======
-package dao;
-
-import dao.Conexao;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.Cliente;
-
-public class ClienteDAO {
-    Conexao con;
-    PreparedStatement pstm;
-    ResultSet rs;
-    
-    public ClienteDAO() {
-        con = new Conexao();
-    }
-    
-    public Cliente consultar(String usuario, String senha) {
-        Cliente c = new Cliente();
-        String sql = "SELECT * FROM usuario WHERE username = ? and senha = ?";
-     
-        try {
-            pstm = this.con.conectar().prepareStatement(sql);
-            pstm.setString(1, usuario);
-            pstm.setString(2, senha);
-            rs = pstm.executeQuery();
-            
-            while(rs.next()){    //move o curso de registros
-                c.setUsuario(rs.getString("username"));
-                c.setSenha(rs.getString("senha"));
-            }
-            
-            pstm.close();
-            con.desconectar();
-        } catch (SQLException ex) {
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return c;
->>>>>>> origin/master
     }
 }

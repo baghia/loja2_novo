@@ -84,11 +84,8 @@ public class SubCategoriaDAO {
     }
     public ArrayList<SubCategoria> listar() {
         ArrayList<SubCategoria> lista = new ArrayList();
-<<<<<<< HEAD
         String sql = "SELECT subcategoria.*, categoria.nome as categoriaNome FROM subcategoria join categoria on (subcategoria.categoria = categoria.id) ORDER BY categoria asc";
-=======
-        String sql = "SELECT subcategoria.*, tipo.nome as categoriaNome FROM subcategoria join tipo on (subcategoria.categoria = tipo.id) ORDER BY tipo asc";
->>>>>>> origin/master
+        String sql2 = "SELECT subcategoria.*, tipo.nome as categoriaNome FROM subcategoria join tipo on (subcategoria.categoria = tipo.id) ORDER BY tipo asc";
         try {
             stm = con.conectar().prepareStatement(sql);
             ResultSet rs = stm.executeQuery();

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -45,36 +44,6 @@ public class Login extends HttpServlet {
             session.setAttribute("usuario", cliente.getUsuario());
             session.setAttribute("senha", cliente.getSenha());
             response.sendRedirect("index.jsp");
-=======
-package control;
-
-import dao.ClienteDAO;
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Cliente;
-
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
-
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        ClienteDAO c = new ClienteDAO();
-        String user = request.getParameter("usuario");
-        String pass = request.getParameter("senha");
-        Cliente cliente = c.consultar(user, pass);
-        if (cliente.getUsuario().equals(user) && cliente.getSenha().equals(pass)) {
-            HttpSession session = request.getSession();
-            session.setAttribute("usuario", cliente.getUsuario());
-            session.setAttribute("senha", cliente.getSenha());
-            response.sendRedirect("Index.jsp");
->>>>>>> origin/master
         } else {
             response.sendRedirect("login.jsp");
         }

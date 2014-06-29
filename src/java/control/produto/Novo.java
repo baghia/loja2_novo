@@ -32,9 +32,9 @@ public class Novo extends HttpServlet {
         produto.getSubcategoria().setId(Integer.parseInt(request.getParameter("subcategoria")));
         
         ProdutoDAO produtoDao = new ProdutoDAO();
-        int result = produtoDao.inserir(produto);
-        if(result > 0){
-            response.sendRedirect("sys/produto/ver.jsp?e-0");
+        boolean result = produtoDao.inserir(produto);
+        if(result){
+            response.sendRedirect("sys/produto/ver.jsp?e=0");
         } else {
             response.sendRedirect("sys/produto/ver.jsp?e=2");
         }
