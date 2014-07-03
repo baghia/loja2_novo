@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.CarrinhoCompras;
 import model.Cliente;
 
 /**
@@ -39,10 +40,16 @@ public class Login extends HttpServlet {
         String user = request.getParameter("usuario");
         String pass = request.getParameter("senha");
         Cliente cliente = c.consultar(user, pass);
+        CarrinhoCompras carrinho = new CarrinhoCompras();
         if (cliente.getUsuario().equals(user) && cliente.getSenha().equals(pass)) {
+            
             HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(1800);
+            session.setAttribute("id_usuario", cliente.getId());
             session.setAttribute("usuario", cliente.getUsuario());
             session.setAttribute("senha", cliente.getSenha());
+            session.setAttribute("carrinho", carrinho);
+            
             response.sendRedirect("index.jsp");
         } else {
             response.sendRedirect("login.jsp");

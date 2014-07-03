@@ -11,6 +11,7 @@ package model;
  * @author Renan Huf Silveira
  */
 public class Cliente {
+    private int id;
     private String nome;
     private String usuario;
     private String senha;
@@ -25,6 +26,14 @@ public class Cliente {
     private String email;
     private int tipo;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }

@@ -38,6 +38,7 @@ public class ClienteDAO {
             rs = pstm.executeQuery();
             
             while(rs.next()){    //move o curso de registros
+                c.setId(rs.getInt("id"));
                 c.setNome(rs.getString("nome"));
                 c.setCpf(rs.getString("cpf"));
                 c.setUsuario(rs.getString("username"));

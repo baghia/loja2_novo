@@ -54,32 +54,38 @@
 
                 <div id="divProduto">
                     <h3><%= "Por: " + fu.converterMoeda(p.getPreco())%></h4>
-                    <h5><%= "12x de " + fu.converterMoeda(Math.ceil(p.getPreco() / 12))%> sem juros</h6>
-                    <%for(int i = 11; i > 1; i --){%>
-                    <h6><%= i+"x de " + fu.converterMoeda(Math.ceil(p.getPreco() / i))%> sem juros</h6>
-                    <%}%>
-                </div>
-            </div>
+                        <h5><%= "12x de " + fu.converterMoeda(Math.ceil(p.getPreco() / 12))%> sem juros</h6>
+                            <%for (int i = 11; i > 1; i--) {%>
+                            <h6><%= i + "x de " + fu.converterMoeda(Math.ceil(p.getPreco() / i))%> sem juros</h6>
+                            <%}%>
+                            </div>
+                            </div>
 
-            <div class="col-md-3 col-md-push-1 produtos">
-                <button class="btn btn-danger btn" type="submit" name="comprar">Comprar</button>
-            </div>
+                            <div class="col-md-3 col-md-push-1 produtos">
+                                <form action="AdicionarCarrinho" method="post">
+                                    <input type="hidden" name="url" value="<%=request.getRequestURL()%>?id=<%=id%>">  
+                                    <input type="hidden" name="id_produto" value="<%= p.getId()%>">
+                                    <% Cliente c = (Cliente)session.getAttribute("usuario");%>
+                                    <input type="hidden" name="id_usuario" value="<%= c.getId() %>">
+                                    <button class="btn btn-danger btn" type="submit" name="addCarrinho">Adicionar à Carrinho de Compras </button>
+                                </form>
+                            </div>
 
-            <div  class="row">                              
-                <div  class="col-md-2 "><!--As duas opcões da coluna filtro são dentro dessa div-->
-                </div>
-            </div>
-            <br/>    
-            <div id="especificacoes">
-                <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-            </div>
-        </div>
-    <%@include file="Include/Partes/rodape.jsp" %>>
-    </body>
-</html>
+                            <div  class="row">                              
+                                <div  class="col-md-2 "><!--As duas opcões da coluna filtro são dentro dessa div-->
+                                </div>
+                            </div>
+                            <br/>    
+                            <div id="especificacoes">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Cras justo odio</li>
+                                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                                    <li class="list-group-item">Morbi leo risus</li>
+                                    <li class="list-group-item">Porta ac consectetur ac</li>
+                                    <li class="list-group-item">Vestibulum at eros</li>
+                                </ul>
+                            </div>
+                            </div>
+                            <%@include file="Include/Partes/rodape.jsp" %>>
+                            </body>
+                            </html>

@@ -17,7 +17,7 @@
         <div class="container">
             <div class="col-md-3 col-md-push-2">
                 <h1>Login</h1>
-                <form action="Login" method="Post">
+                <form action="Loginauth.jsp" method="Post">
                     Usuário<input type="text" class="form-control" name="usuario" placeholder="Digite seu usuário"><br/>
                     Senha<input type="password" class="form-control" name="senha" placeholder="****"><br/>
                     <button type="submit" class="btn btn-success" > <span class="glyphicon glyphicon-ok"></span> Entrar</button>
